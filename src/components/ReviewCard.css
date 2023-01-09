@@ -1,0 +1,9 @@
+.reviewCard {
+  border: 2px #342e28 solid;
+  margin-bottom: 10px;
+}
+
+.reviewCard:hover {
+  background-color: orange;
+  cursor: pointer;
+}
