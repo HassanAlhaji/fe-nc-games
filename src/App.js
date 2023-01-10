@@ -1,25 +1,29 @@
-import logo from "./logo.svg";
 import "./App.css";
 import { useEffect, useState } from "react";
 import ReviewCard from "./components/ReviewCard";
-
+import Header from "./components/Header";
+import api from "./components/utils/utils";
 function App() {
   const [reviews, setReviews] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
-    fetch("https://nc-games-be.onrender.com/api/reviews")
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        setReviews(data.reviews);
-      });
+    setIsLoading(true);
+
+    api.get("/reviews").then((data) => {
+      setReviews(data.reviews);
+      setIsLoading(false);
+    });
   }, []);
+
+  if (isLoading) {
+    return <p className="is-loading">...isLoading</p>;
+  }
+
   return (
     <div className="App">
-      <header reviews={reviews} className="App-header">
-        <h1>NC Games Reviews</h1>
-      </header>
       <main>
+        <Header reviews={reviews} className="App-header" />
         {reviews &&
           reviews.map((review) => {
             return <ReviewCard key={review.review_id} review={review} />;
