@@ -1,14 +1,15 @@
 import ReviewCard from "./ReviewCard";
 import { useEffect, useState } from "react";
-import api from "../utils/utils";
+
+import {getReviews} from "../utils/utils";
 function Home() {
     const [reviews, setReviews] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
   
     useEffect(() => {
       setIsLoading(true);
-      api.get("/reviews").then((respone) => {
-        setReviews(respone.data.reviews);
+      getReviews().then((reviews) => {
+        setReviews(reviews);
         setIsLoading(false);
       });
     }, []);

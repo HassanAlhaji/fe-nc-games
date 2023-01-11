@@ -1,4 +1,4 @@
-import "./App.css";
+import "../src/styling/App.css";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import Nav from "./components/Nav";
@@ -12,7 +12,7 @@ function App() {
         <Nav/>
         <Routes>
           <Route path="/" element={<Home/>}/>
-          <Route path="/:review" element={<SingleReview/>}/>
+          <Route path="/review/:reviewId" element={<SingleReview/>}/>
         </Routes>
       </div>
   );
