@@ -1,0 +1,27 @@
+.review-card {
+  border: 2px #342e28 solid;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  max-width: 400px;
+  align-items: center;
+  padding: 10px;
+}
+
+.reviewCard:hover {
+  background-color: orange;
+  cursor: pointer;
+}
+.review-image {
+  max-width: 400px;
+}
+
+
+
+@media (min-width:850px) {
+  .review-card{
+    max-width: 830px;
+  }
+  .review-image {
+    max-width: 830px;
+  }
+}
