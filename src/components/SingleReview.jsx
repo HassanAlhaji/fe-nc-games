@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getSingleReview } from "../utils/utils";
+import CommentCard from "./CommentCard";
 function SingleReview() {
   const [review, setReview] = useState()
   const [isLoading, setIsLoading] = useState(true)
@@ -32,6 +33,7 @@ const [err, setErr] = useState(null)
       <p>{review.review_body}</p>
       <div>votes : {review.votes}</div>
       <div>comments : {review.comment_count}</div>
+      <CommentCard reviewId={reviewId}/>
     </div>
   );
 }
