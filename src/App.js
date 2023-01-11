@@ -1,34 +1,20 @@
-import "./App.css";
-import { useEffect, useState } from "react";
-import ReviewCard from "./components/ReviewCard";
+import "../src/styling/App.css";
 import Header from "./components/Header";
-import api from "./utils/utils";
+import Home from "./components/Home";
+import Nav from "./components/Nav";
+import SingleReview from "./components/SingleReview";
+import { Routes, Route } from "react-router-dom";
+
 function App() {
-  const [reviews, setReviews] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    setIsLoading(true);
-    api.get("/reviews").then((respone) => {
-      setReviews(respone.data.reviews);
-      setIsLoading(false);
-    });
-  }, []);
-
-  if (isLoading) {
-    return <p className="is-loading">...isLoading</p>;
-  }
-
   return (
-    <div className="App">
-      <main>
-        <Header reviews={reviews} className="App-header" />
-        {reviews &&
-          reviews.map((review) => {
-            return <ReviewCard key={review.review_id} review={review} />;
-          })}
-      </main>
-    </div>
+      <div className="App">
+        <Header className="App-header" />
+        <Nav/>
+        <Routes>
+          <Route path="/" element={<Home/>}/>
+          <Route path="/review/:reviewId" element={<SingleReview/>}/>
+        </Routes>
+      </div>
   );
 }
 
