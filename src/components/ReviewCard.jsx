@@ -8,6 +8,7 @@ function ReviewCard({ review }) {
       <img src={review.review_img_url} className="review-image" alt="review pic"></img>
       <p>Category : {review.category}</p>
       <p> Designer : {review.designer}</p>
+      <button></button>
     </div>
   );
 }

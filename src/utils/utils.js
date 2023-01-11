@@ -14,6 +14,14 @@ return api.get(`/reviews/${reviewId}`).then((res)=>{
   return res.data
 })
 }
+export function getCommets (reviewId){
+  return api.get(`/reviews/${reviewId}/comments`)
+  .then(res =>{
+    console.log(res.data, 'inside utils')
+    return res.data
+  })
+  
+}
 
 
 export default api
