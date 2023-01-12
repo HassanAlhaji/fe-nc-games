@@ -9,18 +9,35 @@ function SingleReview() {
   const [review, setReview] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [err, setErr] = useState(null);
+  const [upvote, setUpvote] = useState(false);
+  const [downvote, setDownvote] = useState(false);
   const { reviewId } = useParams();
 
   const upVoteHandler = () => {
     console.log("you clicked the upvote button!");
-    setReview({ ...review, votes: review.votes + 1 });
-    updateReviewVotes(review.review_id, 1);
+
+    if (!upvote) {
+      setReview({ ...review, votes: review.votes + 1 });
+      updateReviewVotes(review.review_id, 1);
+      setUpvote(true);
+    } else {
+      setReview({ ...review, votes: review.votes - 1 });
+      updateReviewVotes(review.review_id, -1);
+      setUpvote(false);
+    }
   };
 
   const downVoteHandler = () => {
     console.log("you clicked the downVote button!");
-    setReview({ ...review, votes: review.votes - 1 });
-    updateReviewVotes(review.review_id, -1);
+    if (!downvote) {
+      setReview({ ...review, votes: review.votes - 1 });
+      updateReviewVotes(review.review_id, -1);
+      setDownvote(true);
+    } else {
+      setReview({ ...review, votes: review.votes + 1 });
+      updateReviewVotes(review.review_id, +1);
+      setDownvote(false);
+    }
   };
 
   useEffect(() => {
@@ -69,15 +86,29 @@ function SingleReview() {
           </div>
 
           <div className="votes">
-            <BiUpArrow size={22} onClick={upVoteHandler} className="upvote" />
+            <button
+              onClick={upVoteHandler}
+              className="voteup-btn"
+              disabled={downvote}
+            >
+              <BiUpArrow
+                size={30}
+                className={upvote ? "upvote active" : "upvote"}
+              />
+            </button>
 
             <span>{review.votes}</span>
 
-            <BiDownArrow
-              size={22}
+            <button
               onClick={downVoteHandler}
-              className="downvote"
-            />
+              className="votedown-btn"
+              disabled={upvote}
+            >
+              <BiDownArrow
+                size={30}
+                className={downvote ? "downvote active" : "downvote"}
+              />
+            </button>
           </div>
         </div>
 

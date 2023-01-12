@@ -12,6 +12,7 @@
 
 .review img {
   width: 100%;
+  border-radius: 6px;
 }
 
 .review p {
@@ -38,16 +39,19 @@
 .review-footer .votes span {
   font-weight: 700;
   color: #1e293b;
+  font-size: 2rem;
 }
 
 .review-footer .votes svg {
   cursor: pointer;
 }
 
-.review-footer .votes svg.downvote:hover {
+.review-footer .votes .downvote:hover,
+.review-footer .votes .downvote.active {
   fill: red;
 }
 
-.review-footer .votes svg.upvote:hover {
-  fill: darkgreen;
+.review-footer .votes .upvote:hover,
+.review-footer .votes .upvote.active {
+  fill: rgb(14, 175, 14);
 }
