@@ -28,3 +28,26 @@
   justify-content: space-between;
   align-items: center;
 }
+
+.review-footer .votes {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.review-footer .votes span {
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.review-footer .votes svg {
+  cursor: pointer;
+}
+
+.review-footer .votes svg.downvote:hover {
+  fill: red;
+}
+
+.review-footer .votes svg.upvote:hover {
+  fill: darkgreen;
+}

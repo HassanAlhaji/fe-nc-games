@@ -1,14 +1,27 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getSingleReview } from "../utils/utils";
-import "./SingleReview.css";
+import { getSingleReview, updateReviewVotes } from "../utils/utils";
+import { BiUpArrow, BiDownArrow } from "react-icons/bi";
 import ReviewComments from "./ReviewComments";
+import "./SingleReview.css";
 
 function SingleReview() {
   const [review, setReview] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [err, setErr] = useState(null);
   const { reviewId } = useParams();
+
+  const upVoteHandler = () => {
+    console.log("you clicked the upvote button!");
+    setReview({ ...review, votes: review.votes + 1 });
+    updateReviewVotes(review.review_id, 1);
+  };
+
+  const downVoteHandler = () => {
+    console.log("you clicked the downVote button!");
+    setReview({ ...review, votes: review.votes - 1 });
+    updateReviewVotes(review.review_id, -1);
+  };
 
   useEffect(() => {
     setIsLoading(true);
@@ -55,7 +68,17 @@ function SingleReview() {
             </p>
           </div>
 
-          <div className="votes">{review.votes}</div>
+          <div className="votes">
+            <BiUpArrow size={22} onClick={upVoteHandler} className="upvote" />
+
+            <span>{review.votes}</span>
+
+            <BiDownArrow
+              size={22}
+              onClick={downVoteHandler}
+              className="downvote"
+            />
+          </div>
         </div>
 
         <hr />
