@@ -14,7 +14,6 @@ function ReviewCard({ review }) {
       ></img>
       <p>Category : {review.category}</p>
       <p> Designer : {review.designer}</p>
-      <button></button>
     </div>
   );
 }
