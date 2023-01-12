@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getSingleReview } from "../utils/utils";
-import CommentCard from "./CommentCard";
+import "./SingleReview.css";
+import ReviewComments from "./ReviewComments";
 
 function SingleReview() {
   const [review, setReview] = useState();
@@ -31,20 +32,36 @@ function SingleReview() {
   }
 
   return (
-    <div className="review-card">
-      <p>By : {review.owner}</p>
-      <h3>{review.title}</h3>
-      <img
-        src={review.review_img_url}
-        className="review-image"
-        alt="review pic"
-      ></img>
-      <p>Category : {review.category}</p>
-      <p> Designer : {review.designer}</p>
-      <p>{review.review_body}</p>
-      <div>votes : {review.votes}</div>
-      <div>comments : {review.comment_count}</div>
-      <CommentCard reviewId={reviewId} />
+    <div className="review">
+      <div className="container">
+        <h1>{review.title}</h1>
+
+        <h3>By : {review.owner}</h3>
+
+        <img src={review.review_img_url} alt="review pic" />
+
+        <p>{review.review_body}</p>
+
+        <div className="review-footer">
+          <div className="meta">
+            <p>
+              <span>
+                <strong>Category:</strong> {review.category}
+              </span>
+              ,{" "}
+              <span>
+                <strong>Designer:</strong> {review.designer}
+              </span>
+            </p>
+          </div>
+
+          <div className="votes">{review.votes}</div>
+        </div>
+
+        <hr />
+
+        <ReviewComments reviewId={review.review_id} />
+      </div>
     </div>
   );
 }

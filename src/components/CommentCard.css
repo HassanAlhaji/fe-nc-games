@@ -1,0 +1,15 @@
+.comment-card {
+  margin-bottom: 2rem;
+}
+
+.comment-card p {
+  color: #1e293b;
+  line-height: 2rem;
+  margin: 0;
+}
+
+.comment-card .meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

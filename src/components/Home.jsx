@@ -15,14 +15,17 @@ function Home() {
   }, []);
 
   if (isLoading) {
-    return <p className="is-loading">...isLoading</p>;
+    return <p className="is-loading">...is Loading</p>;
   }
+
   return (
     <main>
-      {reviews &&
-        reviews.map((review) => {
-          return <ReviewCard key={review.review_id} review={review} />;
-        })}
+      <div className="container">
+        {reviews &&
+          reviews.map((review) => {
+            return <ReviewCard key={review.review_id} review={review} />;
+          })}
+      </div>
     </main>
   );
 }

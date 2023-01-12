@@ -1,5 +1,6 @@
 import "../styling/ReviewCard.css";
 import { Link } from "react-router-dom";
+
 function ReviewCard({ review }) {
   return (
     <Link to={`/review/${review.review_id}`} className="review-card">

@@ -1,0 +1,13 @@
+.app-header {
+  background-color: #282c34;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: #e2e8f0;
+  margin-bottom: 2rem;
+}
+
+.app-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

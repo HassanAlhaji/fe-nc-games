@@ -1,0 +1,30 @@
+.review h1 {
+  font-size: 3rem;
+  color: #1e293b;
+  font-weight: 700;
+  margin: 0;
+}
+
+.review h3 {
+  text-decoration: none;
+  color: #475569;
+}
+
+.review img {
+  width: 100%;
+}
+
+.review p {
+  color: #1e293b;
+  line-height: 2rem;
+}
+
+.review .meta p span {
+  color: #1e293b;
+}
+
+.review-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

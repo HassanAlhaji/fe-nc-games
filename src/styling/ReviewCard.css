@@ -36,13 +36,3 @@
   color: #475569;
   margin: 0 0 0.8rem 0;
 }
-
-@media (min-width: 850px) {
-  .review-card {
-    max-width: 830px;
-  }
-
-  .review-image {
-    max-width: 830px;
-  }
-}
