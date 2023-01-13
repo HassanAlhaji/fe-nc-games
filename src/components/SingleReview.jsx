@@ -14,8 +14,6 @@ function SingleReview() {
   const { reviewId } = useParams();
 
   const upVoteHandler = () => {
-    console.log("you clicked the upvote button!");
-
     if (!upvote) {
       setReview({ ...review, votes: review.votes + 1 });
       updateReviewVotes(review.review_id, 1);
@@ -28,7 +26,6 @@ function SingleReview() {
   };
 
   const downVoteHandler = () => {
-    console.log("you clicked the downVote button!");
     if (!downvote) {
       setReview({ ...review, votes: review.votes - 1 });
       updateReviewVotes(review.review_id, -1);
