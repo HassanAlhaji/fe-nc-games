@@ -1,10 +1,16 @@
 import { Link } from "react-router-dom";
-function Nav(){
-    return (
-        <ul>
-            <li><Link to='/'>Home</Link></li>
-        </ul>
-    )
+import "./Nav.css";
+
+function Nav() {
+  return (
+    <nav>
+      <ul>
+        <li>
+          <Link to="/">HOME</Link>
+        </li>
+      </ul>
+    </nav>
+  );
 }
 
 export default Nav;

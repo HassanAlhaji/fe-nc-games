@@ -1,27 +1,38 @@
 .review-card {
+  display: flex;
   border: 2px #342e28 solid;
-  margin: 0 auto;
-  margin-bottom: 10px;
-  max-width: 400px;
   align-items: center;
   padding: 10px;
+  border-radius: 8px;
+  text-decoration: none;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+  align-items: flex-start;
 }
 
-.reviewCard:hover {
+.review-card:hover {
   background-color: orange;
-  cursor: pointer;
 }
+
 .review-image {
-  max-width: 400px;
+  width: 14rem;
+  height: 14rem;
+  border-radius: 8px;
+  margin-right: 2rem;
 }
 
+.review-meta-data h3 {
+  text-align: left;
+  text-decoration: none;
+  font-size: 2rem;
+  color: #1e293b;
+  font-weight: 700;
+  margin: 0.5rem 0 1rem 0;
+}
 
-
-@media (min-width:850px) {
-  .review-card{
-    max-width: 830px;
-  }
-  .review-image {
-    max-width: 830px;
-  }
+.review-meta-data p {
+  text-align: left;
+  text-decoration: none;
+  color: #475569;
+  margin: 0 0 0.8rem 0;
 }

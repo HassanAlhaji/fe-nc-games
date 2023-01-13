@@ -22,4 +22,12 @@ export function getCommets(reviewId) {
   });
 }
 
+export function updateReviewVotes(reviewId, updatedVote) {
+  return api
+    .patch(`/reviews/${reviewId}`, { inc_votes: updatedVote })
+    .then((res) => {
+      return res.data;
+    });
+}
+
 export default api;

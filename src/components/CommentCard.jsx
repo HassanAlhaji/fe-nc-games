@@ -1,32 +1,18 @@
-import { useState, useEffect } from "react";
 import moment from "moment";
-import { getCommets } from "../utils/utils";
-import "../styling/commentCard.css";
+import "./CommentCard.css";
 
-function CommentCard({ reviewId }) {
-  const [comments, setComments] = useState([]);
-  useEffect(() => {
-    getCommets(reviewId).then((comments) => {
-      setComments(comments);
-    });
-  }, [reviewId]);
-
+function CommentCard({ comment }) {
   return (
-    <div>
-      {comments.map((comment) => {
-        return (
-          <div className="comments" key={comment.comment_id}>
-            <p>Author {comment.author}</p>
-            <p>{comment.body}</p>
-            <p>
-              {moment(comment.created_at).format(
-                "dddd, Do MMMM YYYY, h:mm:ss a"
-              )}
-            </p>
-            <p>comment votes : {comment.votes}</p>
-          </div>
-        );
-      })}
+    <div className="comment-card">
+      <p>{comment.body}</p>
+
+      <div className="meta">
+        <p>By: {comment.author}</p>
+
+        <p>
+          {moment(comment.created_at).format("dddd, Do MMMM YYYY, h:mm:ss a")}
+        </p>
+      </div>
     </div>
   );
 }
