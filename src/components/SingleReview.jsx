@@ -15,25 +15,50 @@ function SingleReview() {
 
   const upVoteHandler = () => {
     if (!upvote) {
-      setReview({ ...review, votes: review.votes + 1 });
-      updateReviewVotes(review.review_id, 1);
       setUpvote(true);
+      setReview((review) => {
+        return { ...review, votes: review.votes + 1 };
+      });
+      updateReviewVotes(review.review_id, 1).catch((err) => {
+        setReview((review) => {
+          return { ...review, votes: review.votes - 1 };
+        });
+        setUpvote(false);
+      });
     } else {
-      setReview({ ...review, votes: review.votes - 1 });
-      updateReviewVotes(review.review_id, -1);
       setUpvote(false);
+      setReview({ ...review, votes: review.votes - 1 });
+      updateReviewVotes(review.review_id, -1).catch((err) => {
+        setUpvote(true);
+        setReview({ ...review, votes: review.votes + 1 });
+      });
     }
   };
 
   const downVoteHandler = () => {
+    // if not downvoted
     if (!downvote) {
-      setReview({ ...review, votes: review.votes - 1 });
-      updateReviewVotes(review.review_id, -1);
       setDownvote(true);
+      setReview((review) => {
+        return { ...review, votes: review.votes - 1 };
+      });
+      updateReviewVotes(review.review_id, -1).catch((err) => {
+        setDownvote(false);
+        setReview((review) => {
+          return { ...review, votes: review.votes + 1 };
+        });
+      });
     } else {
-      setReview({ ...review, votes: review.votes + 1 });
-      updateReviewVotes(review.review_id, +1);
       setDownvote(false);
+      setReview((review) => {
+        return { ...review, votes: review.votes + 1 };
+      });
+      updateReviewVotes(review.review_id, +1).catch((err) => {
+        setDownvote(true);
+        setReview((review) => {
+          return { ...review, votes: review.votes - 1 };
+        });
+      });
     }
   };
 
