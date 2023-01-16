@@ -30,4 +30,15 @@ export function updateReviewVotes(reviewId, updatedVote) {
     });
 }
 
+export function postComment(reviewId, comment) {
+  return api
+    .post(`/reviews/${reviewId}/comments`, {
+      username: "grumpy19",
+      body: comment,
+    })
+    .then((res) => {
+      return res.data;
+    });
+}
+
 export default api;
