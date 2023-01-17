@@ -4,8 +4,8 @@ const api = axios.create({
   baseURL: "https://nc-games-be.onrender.com/api",
 });
 
-export function getReviews() {
-  return api.get("/reviews").then((res) => {
+export function getReviews(category) {
+  return api.get(`/reviews?category=${category}`).then((res) => {
     return res.data.reviews;
   });
 }
@@ -39,6 +39,11 @@ export function postComment(reviewId, comment) {
     .then((res) => {
       return res.data;
     });
+}
+export function getCategories() {
+  return api.get("/categories").then((res) => {
+    return res.data.categories;
+  });
 }
 
 export default api;
