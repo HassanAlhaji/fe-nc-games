@@ -4,8 +4,7 @@ import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 const Category = () => {
   const [categories, setCategories] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState("");
-  console.log(selectedCategory);
+  const [searchParams, setSearchParams] = useSearchParams();
   useEffect(() => {
     getCategories()
       .then((categorye) => {
@@ -17,9 +16,9 @@ const Category = () => {
   return (
     <select
       onChange={(e) => {
-        setSelectedCategory(e.target.value);
+        setSearchParams({ category: e.target.value });
       }}
-      value={selectedCategory}
+      value={searchParams}
     >
       <option>All</option>
       {categories.map((category) => {

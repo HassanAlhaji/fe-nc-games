@@ -10,7 +10,13 @@ export default function ReviewComments({ reviewId }) {
   const addCommentToReview = (comment) => {
     setComments([comment, ...comments]);
   };
-
+  function updateCommentState(comment){
+    setComments((prevComments)=>{
+      return prevComments.filter(prevComment =>{
+        return prevComment.comment_id != comment.comment_id
+      })
+    })
+  }
   useEffect(() => {
     getCommets(reviewId).then((comments) => {
       setComments(comments);
@@ -24,7 +30,12 @@ export default function ReviewComments({ reviewId }) {
       <CommentForm addCommentsFn={addCommentToReview} reviewId={reviewId} />
 
       {comments.map((comment) => {
-        return <CommentCard comment={comment} key={comment.comment_id} />;
+        return (
+          <CommentCard
+            updateCommentState={updateCommentState} comment={comment}
+            key={comment.comment_id}
+          />
+        );
       })}
     </div>
   );

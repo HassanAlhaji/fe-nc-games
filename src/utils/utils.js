@@ -46,4 +46,8 @@ export function getCategories() {
   });
 }
 
+export function deleteComment(commentId) {
+  return api.delete(`/comments/${commentId}`);
+}
+
 export default api;

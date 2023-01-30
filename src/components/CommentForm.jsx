@@ -29,6 +29,7 @@ export default function CommentForm({ reviewId, addCommentsFn }) {
       setComment(e.target.value);
       setDisableButton(false);
     } else {
+      setComment("");
       setDisableButton(true);
     }
   }
